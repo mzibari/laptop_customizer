@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Header from './Header/Header';
 import SummaryMain from './SummaryMain/SummaryMain';
-
+import Specs from './Specs/Specs';
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
-import slugify from 'slugify';
+
 
 import './App.css';
 
@@ -48,66 +48,22 @@ class App extends Component {
 
   /* Specs Component */
   render() {
-    const features = Object.keys(this.props.features).map((feature, idx) => {
-      /* Processor-0 'Operating System'-1 'Video Card'-2 Display-3*/
-      const featureHash = feature + '-' + idx;
-      /* First time it'll be Processor.map */
-      /* Feature Component */
-      const options = this.props.features[feature].map(item => {
-        /* For each item of each feature. EX  1st item hash will be 
-        "name":"17th-Generation-Intel-Core-HB-(7-Core-with-donut-spare)""cost":700*/
-        const itemHash = slugify(JSON.stringify(item));
-        /* Option Component */
-        return (
-          <div key={itemHash} className="feature__item">
-
-            <input
-              type="radio"
-              id={itemHash}
-              className="feature__option"
-              name={slugify(feature)}
-              checked={item.name === this.state.selected[feature].name}
-              onChange={e => this.updateFeature(feature, item)}
-            />
-            <label htmlFor={itemHash} className="feature__label">
-              {item.name} ({USCurrencyFormat.format(item.cost)})
-            </label>
-          </div>
-        );
-      });
-
-
-
-
-      return (
-        <fieldset className="feature" key={featureHash}>
-          <legend className="feature__name">
-            {/* Feature Component */}
-            <h3>{feature}</h3>
-          </legend>
-          {/* Option Component */}
-          {options}
-        </fieldset>
-      );
-    });
-
-    /* Summary Component */
-
-
-
-    /* Total Component */
 
 
     return (
       <div className="App">
-        {/* Header Component */}
         <Header />
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
+          <Specs
+            features={this.props.features}
+            handleUpdate={this.updateFeature}
+            handleCurrency={USCurrencyFormat}
+            selected={this.state.selected} />
+          {/* 
             {features}
-          </form>
-          <SummaryMain selected={this.state.selected} handleCurrency={USCurrencyFormat}  />
+           */}
+          <SummaryMain selected={this.state.selected} 
+          handleCurrency={USCurrencyFormat} />
         </main>
       </div>
     );
