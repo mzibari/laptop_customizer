@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './SummaryMain.css';
 import SummaryOption from '../SummaryOption/SummaryOption';
+import Total from '../Total/Total';
+
 
 class SummaryMain extends Component {
     render() {
@@ -8,12 +10,7 @@ class SummaryMain extends Component {
             <section className="main__summary">
                 <h2>Your cart</h2>
                 <SummaryOption selected={this.props.selected} handleCurrency={this.props.handleCurrency} />
-                <div className="summary__total">
-                    <div className="summary__total__label">Total</div>
-                    <div className="summary__total__value">
-                        {this.props.handleCurrency.format(this.props.total)}
-                    </div>
-                </div>
+                <Total selected={this.props.selected} handleCurrency={this.props.handleCurrency} />
             </section>
         );
     }

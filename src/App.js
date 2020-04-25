@@ -91,11 +91,6 @@ class App extends Component {
       );
     });
 
-    const total = Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost,
-      0
-    );
-
     /* Summary Component */
 
 
@@ -112,7 +107,7 @@ class App extends Component {
             <h2>Customize your laptop</h2>
             {features}
           </form>
-          <SummaryMain selected={this.state.selected} handleCurrency={USCurrencyFormat} total={total} />
+          <SummaryMain selected={this.state.selected} handleCurrency={USCurrencyFormat}  />
         </main>
       </div>
     );
