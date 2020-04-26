@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import Header from './Header/Header';
 import SummaryMain from './SummaryMain/SummaryMain';
 import Specs from './Specs/Specs';
-
-// Normalizes string as a slug - a string that is safe to use
-// in both URLs and html attributes
-
-
 import './App.css';
 
 // This object will allow us to
@@ -37,7 +32,7 @@ class App extends Component {
       }
     }
   };
-  /* this will be passed down to Specs->Feature->Option */
+  
   updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
@@ -46,9 +41,7 @@ class App extends Component {
     });
   };
 
-  /* Specs Component */
   render() {
-
 
     return (
       <div className="App">
@@ -58,10 +51,8 @@ class App extends Component {
             features={this.props.features}
             handleUpdate={this.updateFeature}
             handleCurrency={USCurrencyFormat}
-            selected={this.state.selected} />
-          {/* 
-            {features}
-           */}
+
+            selected={this.state.selected} />  
           <SummaryMain selected={this.state.selected} 
           handleCurrency={USCurrencyFormat} />
         </main>

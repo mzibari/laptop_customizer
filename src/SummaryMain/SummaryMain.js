@@ -5,7 +5,9 @@ import Total from '../Total/Total';
 
 
 class SummaryMain extends Component {
+
     render() {
+        
         return (
             <section className="main__summary">
                 <h2>Your cart</h2>

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './SummaryOption.css';
 
 class Summary extends Component {
-    static defaultProp = {
-        selected: []
-    }
+    
     render() {
         const summary = Object.keys(this.props.selected).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
